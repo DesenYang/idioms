@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>吉隆坡亚太彩</title>
+
+    <meta name="keywords" content="吉隆坡亚太彩, 吉隆坡"/>
+    <link rel="icon" href="img/icon/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11"/>
+    <meta name="format-detection" content="telephone=no">
+    <script type="text/javascript" src="js/lib/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.jqprint-0.3.js"></script>
+
+    <link rel="stylesheet" href="./static/index.css">
+    <link rel="icon" href="favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11">
+    <meta name="format-detection" content="telephone=no">
+    <script type="text/javascript" src="./static/jquery-1.11.3.js"></script>
+    <style>
+        .STYLE2 {
+            color: #A94D02;
+            font-weight: bold;
+            font-size: 40px;
+        }
+
+        .STYLE3 {
+            font-size: 18px;
+            line-height: 25px;
+            font-weight: 200;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="bodybox">
+    <!--头部-->
+    <div id="headdivbox">
+        <img style="width:100%;border-radius: 5px" src="/img/bp4.png"> <div class="headerbox">
+            <div class="header">
+
+
+                <a style="float:left" href="http://tempvsd.andsmind.com/"><img src="./img/logo2.png" alt=""></a>
+                <ul style="background: #ed2842">
+                    <li> 
+                        <a class="xy" href="http://tempvsd.andsmind.com/">首页</a>
+                    </li>
+
+                    <li>
+                        <a class="kj" href="http://tempvsd.andsmind.com/kaihistory">开奖记录</a>
+                    </li>
+                    <li>
+                        <a class="yc" href="http://tempvsd.andsmind.com/yuctk">预测图库</a>
+                    </li>
+                    <li>
+                        <a class="yc" href="http://tempvsd.andsmind.com/count_asis.php">号码过滤器</a>
+                    </li>
+                    <li>
+                        <a class="js" href="http://tempvsd.andsmind.com/jieshao">彩票介绍</a>
+                    </li>
+                    <li>
+                        <a class="ds"
+                           href="http://tempvsd.andsmind.com/ds">公司董事</a>
+                    </li>
+                    <li>
+                        <a class="jj" href="http://tempvsd.andsmind.com/jj">奖金分配</a>
+                    </li>
+                    <li>
+                        <a class="rq" href="http://tempvsd.andsmind.com/rq.php">投注日期</a>
+                    </li>
+                    <li>
+                        <a style="color: #ed2842; background: #fff; border-bottom: 3px solid #ed2842" class="td"
+                           href="http://tempvsd.andsmind.com/tiangandizhi">天干地支</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="notice-row">
+                <div class="w clearfix pr">
+                    <div class="title fl">
+                        <marquee behavior="" direction="" onmouseenter="this.stop()" onmouseleave="this.start()">
+                            <span>站内公告 :</span>
+                            <font class="notifytxt" style="font-size: 30px" color="#FF0000"></font>
+                        </marquee>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--主体内容-->
+
+    <!--主体内容-->
+    <div style="padding: 20px;border: 1px solid gray; text-align: center">
+        <?php echo $info["info"]; ?>
+    </div>
+
+    <!--尾部-->
+    <div class="footer">
+        <div id="fixedgoBack">
+
+            <div id="modal" style="display: none;">
+                <div id="win">
+                    <div id="bar">
+                        <span style="float:left">在线反馈</span>
+                        <span class="bar_remove" style="float:right"></span>
+                    </div>
+                    <div class="hh">
+                        欢迎对六合彩汇提出宝贵的建议或意见
+                    </div>
+                    <div class="content">
+                        <label>称呼</label><input type="text" id="first_input"/>
+                        <select name="" id="select_op">
+                            <option value="1" class="option_index">电话</option>
+                            <option value="2" class="option_index">邮箱</option>
+                            <option value="3" class="option_index">QQ</option>
+                            <option value="4" class="option_index">微信</option>
+                        </select><input type="text" id="fanku_text"/>
+                    </div>
+                    <div class="div_down">
+                        <textarea name="" rows="" cols="" id="advice" placeholder="请写下您宝贵的意见..."></textarea>
+                    </div>
+                    <div class="button_box">
+                        <button id="btn_upload">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer2">
+            <p class="ptop">免责声明：本站内容仅作参考及交流，不进行任何现金交易行为。</p>
+            <p style="display: inline">本网不承担由于内容的合法性所引起的一切争议和法律责任。</p>
+
+        </div>
+    </div>
+    <script type="text/javascript" src="https://js.users.51.la/19291692.js"></script>
+
+</div>
+
+<script type="text/javascript" src="js/getnotify.js"></script> 
+</body>
+
+</body>
+</html>

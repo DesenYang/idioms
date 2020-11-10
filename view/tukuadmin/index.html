@@ -1,0 +1,272 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>后台管理系统PHP 表格页面 - </title>
+    <meta name="description" content="这是一个 table 页面">
+    <meta name="keywords" content="table">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <script type="text/javascript" charset="utf-8" src="ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="editor_api.js"></script>
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+    以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar admin-header">
+    <div class="am-topbar-brand">
+        <strong></strong> <small>管理后台</small>
+    </div>
+
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
+            data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span
+            class="am-icon-bars"></span></button>
+</header>
+
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <div class="admin-sidebar">
+        <ul class="am-list admin-sidebar-list">
+
+            <li><a href="/admin"><span class="am-icon-table"></span> 开奖管理</a></li>
+            <li style="background: #3bb4f2"><a href="/tukuadmin"><span class="am-icon-pencil-square-o"></span> 预测图库</a>
+            </li>
+            <li><a href="/jieshaoadmin"><span class="am-icon-pencil-square-o"></span> 彩票介绍</a></li>
+            <li><a href="/dongshiadmin"><span class="am-icon-pencil-square-o"></span> 公司董事</a></li>
+            <li><a href="/jiangjinadmin"><span class="am-icon-pencil-square-o"></span> 奖金分配</a></li>
+            <li><a href="/riqiadmin"><span class="am-icon-pencil-square-o"></span> 投注日期</a></li>
+            <li><a href="/tiangandizhiadmin"><span class="am-icon-pencil-square-o"></span> 天支地干</a></li>
+        </ul>
+    </div>
+    <div class="admin-content">
+
+        <div class="am-cf am-padding">
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">预测图库管理</strong> / <small>Table</small>
+            </div>
+        </div>
+
+        <div class="am-g">
+            <div class="am-u-md-6 am-cf">
+                <div class="am-fl am-cf">
+                    <div class="am-btn-toolbar am-fl">
+                        <div class="am-btn-group am-btn-group-xs">
+                            <button onclick="showorhideaddform()" id="delDevice" type="button"
+                                    class="am-btn am-btn-default"><span
+                                    class="am-icon-plus"></span> 新增
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="am-u-md-3 am-cf">
+                <div class="am-fr">
+                    <div class="am-input-group am-input-group-sm">
+                        <input id="searchvalue" type="text" class="am-form-field">
+                        <span class="am-input-group-btn">
+                        <button onclick="searchImg()" class="am-btn am-btn-default" type="button" value="搜索">搜索</button>
+                </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="am-g">
+            <div class="am-u-sm-12">
+                <div class="am-form" id="addform" style="padding: 10px ;display: none">
+                    <div style="border: 1px solid gray;padding: 10px;text-align: left">
+
+                        <div class="am-g am-margin-top">
+                            <div class="am-u-sm-2 am-text-right">
+                                图库名称：
+                            </div>
+                            <div class="am-u-sm-4">
+                                <input id="tukuname" type="text" class="am-input-sm">
+                            </div>
+                            <div class="am-u-sm-6"></div>
+                        </div>
+
+                        <div class="am-g am-margin-top">
+                            <div class="am-u-sm-2 am-text-right">
+                                描述：
+                            </div>
+                            <div class="am-u-sm-6">
+                                <script type="text/plain" id="myEditor1" style="margin-bottom:10px;"></script>
+                            </div>
+                            <div class="am-u-sm-4"></div>
+                        </div>
+                        <div class="am-g am-margin-top">
+                            <div class="am-u-sm-2 am-text-right">
+                                操作：
+                            </div>
+                            <div class="am-u-sm-6">
+                                <button onclick="saveform()" id="save" type="button"
+                                        class="am-btn am-btn-default"><span
+                                        class="am-icon-plus"></span> 保存
+                                </button>
+                            </div>
+                            <div class="am-u-sm-4"></div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            UE.getEditor('myEditor1', {
+                theme: "default", //皮肤
+                lang: 'zh-cn' //语言
+            });
+            function saveform() {
+                console.log("Try setjieshao")
+                var data = UE.getEditor('myEditor1').getContent();
+                console.log("content :" + data);
+                $.ajax({
+                    // cache: true,
+                    type: "post",
+                    url: "/tukuadmin/addtuku",
+                    data: {
+                        "name": document.getElementById("tukuname").value,
+                        "info": data
+                    },
+
+                    async: false,
+                    error: function (request) {
+                        console.log(request)
+                        alert("Connection error");
+                    },
+                    success: function (info) {
+                        console.log(info)
+                        alert("success");
+                    }
+                });
+            }
+            function setjieshao () {
+
+            }
+        </script>
+        <script type="text/javascript">
+            function searchImg() {
+                console.log("go search")
+                var searchval = document.getElementById('searchvalue').value;
+                window.location.href = "/tukuadmin?search=" + searchval;
+            }
+
+            function showorhideaddform() {
+                console.log("switch")
+                var addform = document.getElementById("addform");
+                if (addform.style.display == "none") {
+                    addform.style.display = "";
+                } else {
+                    addform.style.display = "none";
+                }
+            }
+        </script>
+        <div class="am-g">
+            <div class="am-u-sm-12">
+                <form class="am-form">
+                    <table class="am-table am-table-striped am-table-hover table-main">
+                        <thead>
+                        <tr>
+                            <th class="table-check"><input type="checkbox"/></th>
+                            <th class="table-id">ID</th>
+                            <th class="table-type">名称</th>
+                            <th class="table-type">预览图</th>
+                            <th class="table-set">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            foreach($info as $item ) {
+                                echo " <tr>
+                        <td><input type='checkbox'/></td>
+                        ".
+                        "
+                        <td>".$item['id']."</td>
+                        ".
+                        "
+                        <td>".$item['name']."</td>
+                        ".
+                        "
+                        <td>".$item["imgurl"]."</td>
+                        ".
+                        "
+                        <td>
+                            <button onclick='deleteitem(".$item['id'].")' class='am-btn am-btn-default am-btn-xs am-text-danger'><span
+                                    class='am-icon-trash-o'></span> 删除
+                            </button>
+                        </td>
+                        ".
+                        "</tr>";
+                        };
+                        ?>
+                        </tbody>
+                    </table>
+
+                    <hr/>
+
+                </form>
+            </div>
+
+        </div>
+        <script type="text/javascript" >
+            function  deleteitem(id) {
+                $.ajax({
+                    // cache: true,
+                    type: "post",
+                    url: "/tukuadmin/deltuku",
+                    data: {
+                         "id": id
+                    },
+
+                    async: false,
+                    error: function (request) {
+                        console.log(request)
+                        alert("操作失败");
+                    },
+                    success: function (info) {
+                        console.log(info);
+                        if(info.code == 1)
+                        alert("成功！");
+                        else
+                            alert("失败！");
+                    }
+                });
+            }
+        </script>
+    </div>
+    <!-- content end -->
+</div>
+
+<footer>
+    <hr>
+    <p class="am-padding-left">© 2020 Nomansky public</p>
+</footer>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script>
+<script src="assets/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/amazeui.min.js"></script>
+<!--<![endif]-->
+<script src="assets/js/app.js"></script>
+</body>
+</html>
