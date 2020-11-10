@@ -71,5 +71,10 @@ class Index extends BaseController
         return json(["code"=>1]);
 
     }
+    public function getNotify () {
+        $info =   Db::table("tp_notify")->where("id",1)->find();
 
+        return json(["code"=>1,"info"=>$info]);
+
+    }
 }
